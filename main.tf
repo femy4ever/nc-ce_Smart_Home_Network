@@ -20,3 +20,10 @@ module "Heating" {
   Table_Name = "Heating"
   Hash_Key   = "id"
 }
+module "servers" {
+  source             = "./modules/servers"
+  instance_type      = var.instance_type
+  public_subnets     = module.vpc.public_subnets_ids
+  private_subnets    = module.vpc.private_subnets_ids
+  security_group_ids = module.security.security_group_ids
+}
