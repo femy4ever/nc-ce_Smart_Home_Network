@@ -10,3 +10,6 @@ variable "availability_zone" {
 variable "private_subnets" {
   type = list(string)
 }
+variable "instance_type" {
+  type = string
+}
