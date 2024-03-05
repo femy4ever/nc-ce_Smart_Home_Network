@@ -5,8 +5,8 @@ resource "aws_security_group" "allow_HTTP" {
 }
 resource "aws_security_group_rule" "allow_HTTP_ingress" {
   type              = "ingress"
-  from_port         = 80 #3000
-  to_port           = 80 #3000
+  from_port         = 3000
+  to_port           = 3000
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   ipv6_cidr_blocks  = ["::/0"]
@@ -37,8 +37,8 @@ resource "aws_security_group_rule" "allow_HTTPS_ingress" {
 }
 resource "aws_security_group_rule" "allow_HTTPS_egress" {
   type              = "egress"
-  from_port         = 0
-  to_port           = 0
+  from_port         = 443
+  to_port           = 443
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
   ipv6_cidr_blocks  = ["::/0"]
@@ -54,7 +54,7 @@ resource "aws_security_group_rule" "allow_SSH_ingress" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  cidr_blocks       = ["31.205.213.69/32"]
+  cidr_blocks       = ["31.205.213.69/32", "10.0.0.0/16"]
   ipv6_cidr_blocks  = ["::/0"]
   security_group_id = aws_security_group.allow_SSH.id
 }
@@ -62,7 +62,7 @@ resource "aws_security_group_rule" "allow_SSH_egress" {
   type              = "egress"
   from_port         = 0
   to_port           = 0
-  protocol          = "tcp"
+  protocol          = -1
   cidr_blocks       = ["0.0.0.0/0"]
   ipv6_cidr_blocks  = ["::/0"]
   security_group_id = aws_security_group.allow_SSH.id
