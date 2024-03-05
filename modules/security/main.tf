@@ -1,7 +1,7 @@
 resource "aws_security_group" "allow_HTTP" {
-  name = "allow_HTTP"
+  name        = "allow_HTTP"
   description = "allow HTTP inbound traffic"
-  vpc_id = var.vpc_id
+  vpc_id      = var.vpc_id
 }
 resource "aws_security_group_rule" "allow_HTTP_ingress" {
   type              = "ingress"
@@ -22,9 +22,9 @@ resource "aws_security_group_rule" "allow_HTTP_egress" {
   security_group_id = aws_security_group.allow_HTTP.id
 }
 resource "aws_security_group" "allow_HTTPS" {
-  name = "allow_HTTPS"
+  name        = "allow_HTTPS"
   description = "allow HTTPS inbound traffic"
-  vpc_id = var.vpc_id
+  vpc_id      = var.vpc_id
 }
 resource "aws_security_group_rule" "allow_HTTPS_ingress" {
   type              = "ingress"
@@ -45,9 +45,9 @@ resource "aws_security_group_rule" "allow_HTTPS_egress" {
   security_group_id = aws_security_group.allow_HTTPS.id
 }
 resource "aws_security_group" "allow_SSH" {
-  name = "allow_SSH"
+  name        = "allow_SSH"
   description = "allow SSH inbound traffic from my IP only"
-  vpc_id = var.vpc_id
+  vpc_id      = var.vpc_id
 }
 resource "aws_security_group_rule" "allow_SSH_ingress" {
   type              = "ingress"
