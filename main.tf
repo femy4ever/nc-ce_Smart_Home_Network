@@ -1,11 +1,22 @@
 module "vpc" {
-  source = "./modules/vpc"
-  vpc_cidr_block = var.vpc_cidr_block
-  public_subnets = var.public_subnets
+  source            = "./modules/vpc"
+  vpc_cidr_block    = var.vpc_cidr_block
+  public_subnets    = var.public_subnets
   availability_zone = var.availability_zone
-  private_subnets = var.private_subnets
+  private_subnets   = var.private_subnets
 }
 module "security" {
-    source = "./modules/security"
-    vpc_id = module.vpc.vpc_id
+  source = "./modules/security"
+  vpc_id = module.vpc.vpc_id
+}
+
+module "dynamoDB" {
+  source     = "./modules/dynamoDB"
+  Table_Name = "Lighting"
+  Hash_Key   = "id"
+}
+module "Heating" {
+  source     = "./modules/dynamoDB"
+  Table_Name = "Heating"
+  Hash_Key   = "id"
 }
