@@ -13,12 +13,14 @@ module "security" {
 module "dynamoDB" {
   source     = "./modules/dynamoDB"
   Table_Name = "Lighting"
-  Hash_Key   = "id"
+  Hash_Key   = var.Hash_Key
+  Hash_Key_type = var.Hash_Key_type
 }
 module "Heating" {
   source     = "./modules/dynamoDB"
   Table_Name = "Heating"
-  Hash_Key   = "id"
+  Hash_Key   = var.Hash_Key
+  Hash_Key_type = var.Hash_Key_type
 }
 module "servers" {
   source             = "./modules/servers"

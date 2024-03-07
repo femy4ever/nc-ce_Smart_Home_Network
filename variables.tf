@@ -13,3 +13,10 @@ variable "private_subnets" {
 variable "instance_type" {
   type = string
 }
+variable "Hash_Key_type" {
+  type    = string
+  default = "N"
+}
+variable "Hash_Key" {
+  type = string
+}

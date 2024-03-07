@@ -6,5 +6,4 @@ variable "Hash_Key" {
 }
 variable "Hash_Key_type" {
   type    = string
-  default = "N"
 }
