@@ -12,17 +12,17 @@ resource "aws_lb_target_group" "alb_tg_public" {
 resource "aws_lb_target_group_attachment" "Lighting" { 
    target_group_arn = aws_lb_target_group.alb_tg_public.arn
    target_id        = var.server_ids[0]
-   port             = 3000
+   port             = var.port_number
  }
  resource "aws_lb_target_group_attachment" "Heating" { 
    target_group_arn = aws_lb_target_group.alb_tg_public.arn
    target_id        = var.server_ids[1]
-   port             = 3000
+   port             = var.port_number
  }
  resource "aws_lb_target_group_attachment" "Status" { 
    target_group_arn = aws_lb_target_group.alb_tg_public.arn
    target_id        = var.server_ids[2]
-   port             = 3000
+   port             = var.port_number
  }
 
 resource "aws_lb" "public" {
@@ -61,7 +61,7 @@ resource "aws_lb_target_group" "alb_tg_private" {
 resource "aws_lb_target_group_attachment" "Auth" {
    target_group_arn = aws_lb_target_group.alb_tg_private.arn
    target_id        = var.server_ids[3]
-   port             = 3000
+   port             = var.port_number
  }
  resource "aws_lb" "private" {
   name               = "private-lb"

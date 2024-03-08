@@ -23,3 +23,18 @@ variable "Hash_Key" {
 variable "target_group_name" {
   type = string
 }
+variable "desired_capacity" {
+  type = number
+}
+variable "max_size" {
+  type = number
+}
+variable "min_size" {
+  type = number
+}
+variable "port_number" {
+  type    = number
+}
+# variable "ami_ids" {
+#   type = list(string)
+# }

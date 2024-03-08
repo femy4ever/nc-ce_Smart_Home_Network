@@ -37,4 +37,25 @@ module "load_balancer" {
   private_subnets    = module.vpc.private_subnets_ids
   server_ids         = module.servers.server_ids
   target_group_name  = var.target_group_name
+  port_number = var.port_number
+}
+
+module "autoscaling" {
+  source            = "./modules/autoscaling"
+  availability_zone = var.availability_zone
+  public_subnets    = module.vpc.public_subnets_ids
+  private_subnets   = module.vpc.private_subnets_ids
+  instance_type     = var.instance_type
+  desired_capacity  = var.desired_capacity
+  min_size          = var.min_size
+  max_size          = var.max_size
+  ami_ids = module.ami.ami_ids
+  public_target_group_arns = module.load_balancer.public_target_group_arns
+  private_target_group_arns = module.load_balancer.private_target_group_arns
+}
+
+module "ami" {
+  source = "./ami"
+  server_ids         = module.servers.server_ids
+  
 }
