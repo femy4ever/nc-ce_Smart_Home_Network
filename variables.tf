@@ -20,3 +20,6 @@ variable "Hash_Key_type" {
 variable "Hash_Key" {
   type = string
 }
+variable "target_group_name" {
+  type = string
+}

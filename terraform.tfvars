@@ -4,4 +4,5 @@ availability_zone = ["eu-west-2a", "eu-west-2b", "eu-west-2c"]
 private_subnets   = ["10.0.1.0/24", "10.0.3.0/24", "10.0.5.0/24"]
 instance_type     = "t2.micro"
 Hash_Key_type     = "N"
-Hash_Key   = "id"
+Hash_Key          = "id"
+target_group_name = "tgalb"
