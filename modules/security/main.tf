@@ -77,17 +77,3 @@ resource "aws_security_group_rule" "allow_SSH_egress" {
   security_group_id = aws_security_group.allow_SSH.id
 }
 
-# resource "aws_security_group" "allow_AUTH" {
-#   name        = "allow_AUTH"
-#   description = "allow AUTH inbound traffic"
-#   vpc_id      = var.vpc_id
-# }
-# resource "aws_security_group_rule" "allow_AUTH_ingress" {
-#   type              = "ingress"
-#   from_port         = 3000
-#   to_port           = 3000
-#   protocol          = "tcp"
-#   self = true
-#   security_group_id = aws_security_group.allow_AUTH.id
-# }
-

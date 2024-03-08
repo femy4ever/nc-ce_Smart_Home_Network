@@ -10,16 +10,16 @@ module "security" {
   vpc_id = module.vpc.vpc_id
 }
 
-module "dynamoDB" {
-  source     = "./modules/dynamoDB"
-  Table_Name = "Lighting"
-  Hash_Key   = var.Hash_Key
+module "Lighting" {
+  source        = "./modules/dynamoDB"
+  Table_Name    = "Lighting"
+  Hash_Key      = var.Hash_Key
   Hash_Key_type = var.Hash_Key_type
 }
 module "Heating" {
-  source     = "./modules/dynamoDB"
-  Table_Name = "Heating"
-  Hash_Key   = var.Hash_Key
+  source        = "./modules/dynamoDB"
+  Table_Name    = "Heating"
+  Hash_Key      = var.Hash_Key
   Hash_Key_type = var.Hash_Key_type
 }
 module "servers" {
@@ -28,4 +28,13 @@ module "servers" {
   public_subnets     = module.vpc.public_subnets_ids
   private_subnets    = module.vpc.private_subnets_ids
   security_group_ids = module.security.security_group_ids
+}
+module "load_balancer" {
+  source             = "./modules/load_balancer"
+  vpc_id             = module.vpc.vpc_id
+  security_group_ids = module.security.security_group_ids
+  public_subnets     = module.vpc.public_subnets_ids
+  private_subnets    = module.vpc.private_subnets_ids
+  server_ids         = module.servers.server_ids
+  target_group_name  = var.target_group_name
 }
